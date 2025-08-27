@@ -1,6 +1,98 @@
 {% extends "base.html" %}
 {% block title %}Your Cart – Electronic Store{% endblock %}
+
 {% block content %}
+<style>
+  #cart-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #cart-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+  }
+
+  .cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease;
+  }
+
+  .cart-items li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+
+  .cart-items span {
+    margin-right: 15px;
+  }
+
+  .cart-items input[type="number"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .link-danger {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .link-danger:hover {
+    text-decoration: underline;
+  }
+
+  .checkout {
+    text-align: right;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #2980b9;
+  }
+
+  button[type="button"] {
+    background-color: #2ecc71;
+  }
+
+  button[type="button"]:hover {
+    background-color: #27ae60;
+  }
+</style>
+
 <section id="cart-section">
   <h2>Your Cart</h2>
 

@@ -33,7 +33,7 @@ def _save_cart(request, cart):
 # Add to cart (POST only)
 def add_to_cart(request, product_id):
     if request.method != "POST":
-        return redirect("home")
+        return redirect("index") # Changed 'home' to 'index'
     product = get_object_or_404(Product, id=product_id)
     cart = _get_cart(request.session)
     key = str(product.id)
@@ -42,8 +42,7 @@ def add_to_cart(request, product_id):
     else:
         cart[key] = {"name": product.name, "price": float(product.price), "qty": 1}
     _save_cart(request, cart)
-    return redirect(request.POST.get("next") or "home")
-
+    return redirect(request.POST.get("next") or "index") # Changed 'home' to 'index'
 # Remove item
 def remove_from_cart(request, product_id):
     cart = _get_cart(request.session)
