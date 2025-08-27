@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Electronic Store{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="{% url 'home' %}">Electronic</a></div>
+  <ul class="nav-links">
+    {% for c in nav_categories %}
+      <li><a href="{% url 'category' c.slug %}">{{ c.name }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="nav-right">
+    <form method="get" action="{% url 'search' %}" class="search-box">
+      <input type="text" name="q" placeholder="Search products...">
+      <button type="submit">🔍</button>
+    </form>
+    <div class="cart">
+      <a href="{% url 'cart' %}">🛒 <span class="cart-count">{{ cart_count }}</span></a>
+    </div>
+    <div class="profile"></div>
+  </div>
+</nav>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <p>&copy; {{ now|date:"Y" }} Electronic Store</p>
+</footer>
+
+</body>
+</html>

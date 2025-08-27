@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Home – Electronic Store{% endblock %}
+{% block content %}
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Welcome to Electronic Store – your one-stop shop for laptops, smartphones, headphones and more.</p>
+</section>
+
+{% for category in categories %}
+<section id="{{ category.slug }}">
+  <h2>{{ category.name }}</h2>
+  <div class="product-grid">
+    {% for product in category.products.all %}
+    <div class="card">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <h3>{{ product.name }}</h3>
+      <div class="price">${{ product.price }}</div>
+      <form method="post" action="{% url 'add_to_cart' product.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" class="add-btn">Add to Cart</button>
+      </form>
+    </div>
+    {% empty %}
+      <p>No products in this category yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+
+<section id="membership">
+  <h2>Membership</h2>
+  <p>Join our membership program and enjoy exclusive discounts and perks.</p>
+</section>
+
+<section id="faqs">
+  <h2>FAQs</h2>
+  <p><strong>Free delivery?</strong> Yes, on orders above $100.</p>
+</section>
+
+{% endblock %}

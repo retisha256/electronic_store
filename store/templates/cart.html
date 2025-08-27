@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Your Cart – Electronic Store{% endblock %}
+{% block content %}
+<section id="cart-section">
+  <h2>Your Cart</h2>
+
+  <form method="post" action="{% url 'update_cart' %}">
+    {% csrf_token %}
+    <ul class="cart-items">
+      {% for item in items %}
+      <li>
+        <span>{{ item.name }}</span>
+        <span>${{ item.price }}</span>
+        <span>
+          Qty:
+          <input type="number" name="qty_{{ item.id }}" value="{{ item.qty }}" min="0" style="width:60px;">
+        </span>
+        <span>$ {{ item.line_total }}</span>
+        <a class="link-danger" href="{% url 'remove_from_cart' item.id %}">Remove</a>
+      </li>
+      {% empty %}
+      <li>Your cart is empty.</li>
+      {% endfor %}
+    </ul>
+    <div class="checkout">Total: $<strong>{{ total }}</strong></div>
+    {% if items %}
+      <button type="submit">Update Cart</button>
+      <a href="{% url 'checkout' %}"><button type="button">Proceed to Checkout</button></a>
+    {% endif %}
+  </form>
+</section>
+{% endblock %}

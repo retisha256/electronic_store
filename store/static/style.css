@@ -1,0 +1,53 @@
+/* Base */
+body { margin:0; font-family: Arial, sans-serif; background:#f9f9f9; }
+main { padding-bottom: 60px; }
+
+/* Navbar */
+nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 40px; background:#fff; border-bottom:1px solid #eee;
+  position:sticky; top:0; z-index:1000;
+}
+.logo a { font-size:20px; font-weight:bold; text-decoration:none; color:#000; }
+.nav-links { display:flex; gap:24px; list-style:none; margin:0; padding:0; }
+.nav-links a { text-decoration:none; color:#000; font-weight:500; }
+.nav-links a:hover { color:#555; }
+.nav-right { display:flex; align-items:center; gap:16px; }
+.search-box { display:flex; align-items:center; border:1px solid #ccc; border-radius:20px; padding:5px 10px; background:#fff; }
+.search-box input { border:none; outline:none; padding:6px; }
+.search-box button { border:none; background:none; cursor:pointer; }
+.cart a { text-decoration:none; font-size:18px; position:relative; color:#000; }
+.cart-count { position:absolute; top:-8px; right:-12px; background:red; color:#fff; font-size:12px; border-radius:50%; padding:2px 6px; }
+.profile { width:32px; height:32px; background:#000; border-radius:50%; }
+
+/* Sections */
+section {
+  padding:40px; background:#fff; margin:20px auto; border-radius:10px;
+  width:90%; max-width:1200px; box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+h2 { margin-top:0; text-align:center; }
+
+/* Product grid */
+.product-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin-top:20px;
+}
+.card { background:#fff; border:1px solid #eee; border-radius:10px; padding:15px; text-align:center; }
+.card img { max-width:100%; height:160px; object-fit:contain; border-radius:8px; }
+.card h3 { margin:12px 0 6px; font-size:17px; }
+.price { font-weight:bold; margin:6px 0 14px; }
+.add-btn, button {
+  background:#000; color:#fff; border:none; padding:8px 16px; border-radius:20px; cursor:pointer;
+}
+.add-btn:hover, button:hover { background:#333; }
+
+/* Cart */
+.cart-items { list-style:none; padding:0; }
+.cart-items li { display:flex; gap:12px; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:10px 0; }
+.cart-items input[type="number"] { padding:4px; }
+
+/* Forms */
+.form-grid { display:grid; gap:12px; max-width:500px; margin:0 auto; }
+label input { display:block; width:100%; margin-top:6px; padding:8px; border:1px solid #ccc; border-radius:6px; }
+
+/* Footer */
+.footer { text-align:center; padding:20px; color:#666; }

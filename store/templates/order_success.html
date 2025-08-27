@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Order Confirmed – Electronic Store{% endblock %}
+{% block content %}
+<section>
+  <h2>Thank you! 🎉</h2>
+  <p>Your order #{{ order.id }} has been placed successfully.</p>
+  <p>Total: ${{ order.total }}</p>
+  <h3>Items</h3>
+  <ul>
+    {% for it in order.items.all %}
+      <li>{{ it.product.name }} × {{ it.quantity }} — ${{ it.price }} (each)</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'home' %}"><button type="button">Back to shop</button></a>
+</section>
+{% endblock %}
